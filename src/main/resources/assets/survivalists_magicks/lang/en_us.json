@@ -1,0 +1,6 @@
+{
+  "survivalists_magicks:components/warmup": "Warm Up",
+  "survivalists_magicks:components/cooldown": "Cool Down",
+  "survivalists_magicks:components/cooldown.desc.delay": "The Amount of Delay between casting and execution",
+  "survivalists_magicks:components/warmup.desc.delay": "The Amount of Delay between casting and execution"
+}
