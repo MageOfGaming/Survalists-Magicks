@@ -1,6 +1,11 @@
 {
   "survivalists_magicks:components/warmup": "Warm Up",
+  "survivalists_magicks:components/warmup.desc.delay": "The Amount of Delay between casting and execution",
+  "survivalists_magicks:components/warmup.desc.magnitude": "Determines the strength of the heat effect",
+  "survivalists_magicks:components/warmup.desc.precision": "If set to 1, you won't be able to heat yourself up to the point of a heatstroke",
+
   "survivalists_magicks:components/cooldown": "Cool Down",
   "survivalists_magicks:components/cooldown.desc.delay": "The Amount of Delay between casting and execution",
-  "survivalists_magicks:components/warmup.desc.delay": "The Amount of Delay between casting and execution"
+  "survivalists_magicks:components/cooldown.desc.magnitude": "Determines the strength of the cooling effect",
+  "survivalists_magicks:components/cooldown.desc.precision": "If set to 1, you won't be able to overcool yourself to the point of contracting frostbite"
 }

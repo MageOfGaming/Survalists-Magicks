@@ -27,7 +27,6 @@ import sfiomn.legendarysurvivaloverhaul.api.temperature.TemperatureEnum;
 import sfiomn.legendarysurvivaloverhaul.api.temperature.TemperatureUtil;
 import sfiomn.legendarysurvivaloverhaul.common.capabilities.temperature.TemperatureCapability;
 import sfiomn.legendarysurvivaloverhaul.common.capabilities.temperature.TemperatureProvider;
-import sfiomn.legendarysurvivaloverhaul.registry.SoundRegistry;
 
 public class ComponentCoolDown extends SpellEffect {
     public ComponentCoolDown(ResourceLocation guiIcon) {
