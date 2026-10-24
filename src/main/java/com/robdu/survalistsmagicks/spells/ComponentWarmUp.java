@@ -35,8 +35,6 @@ public class ComponentWarmUp extends SpellEffect {
             LazyOptional<TemperatureCapability> playerTemp = player.getCapability(TemperatureProvider.TEMPERATURE_CAPABILITY);
             playerTemp.ifPresent(data -> {
 
-                float currentTemp = data.getTemperatureLevel();
-
                 //Heat up the player without overheating them if precision is set to 1
                 if ((int) iModifiedSpellPart.getValue(Attribute.PRECISION) == 1) {
                     data.addTemperatureLevel(3.5f * iModifiedSpellPart.getValue(Attribute.MAGNITUDE));
