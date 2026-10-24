@@ -12,7 +12,6 @@ import com.mna.api.spells.parts.SpellEffect;
 import com.mna.api.spells.targeting.SpellContext;
 import com.mna.api.spells.targeting.SpellSource;
 import com.mna.api.spells.targeting.SpellTarget;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,8 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
-import sfiomn.legendarysurvivaloverhaul.api.temperature.TemperatureEnum;
-import sfiomn.legendarysurvivaloverhaul.api.temperature.TemperatureUtil;
 import sfiomn.legendarysurvivaloverhaul.common.capabilities.temperature.TemperatureCapability;
 import sfiomn.legendarysurvivaloverhaul.common.capabilities.temperature.TemperatureProvider;
 import sfiomn.legendarysurvivaloverhaul.registry.SoundRegistry;
@@ -35,12 +32,23 @@ public class ComponentWarmUp extends SpellEffect {
     @Override
     public ComponentApplicationResult ApplyEffect(SpellSource spellSource, SpellTarget spellTarget, IModifiedSpellPart<SpellEffect> iModifiedSpellPart, SpellContext spellContext) {
         if (spellTarget.getEntity() instanceof Player player) {
-            LazyOptional<TemperatureCapability> playerTemp = player.getCapability(TemperatureProvider.TEMPERATURE_CAPABILITY, null);
+            LazyOptional<TemperatureCapability> playerTemp = player.getCapability(TemperatureProvider.TEMPERATURE_CAPABILITY);
             playerTemp.ifPresent(data -> {
+
                 float currentTemp = data.getTemperatureLevel();
-                TemperatureEnum playerTemp2 = TemperatureUtil.getTemperatureEnum(currentTemp);
-                player.sendSystemMessage(Component.literal(playerTemp2.toString()));
-                player.sendSystemMessage(Component.literal(String.valueOf(data.getTemperatureLevel())));
+
+                //Heat up the player without overheating them if precision is set to 1
+                if ((int) iModifiedSpellPart.getValue(Attribute.PRECISION) == 1) {
+                    data.addTemperatureLevel(3.5f * iModifiedSpellPart.getValue(Attribute.MAGNITUDE));
+                    if (data.getTemperatureLevel() > 34.0f) {
+                        data.setTemperatureLevel(34.0f);
+                    }
+                } else {
+                    data.addTemperatureLevel(3.5f * iModifiedSpellPart.getValue(Attribute.MAGNITUDE));
+                    if (data.getTemperatureLevel() > 40.0f) {
+                        data.setTemperatureLevel(40.0f);
+                    }
+                }
             });
             return ComponentApplicationResult.SUCCESS;
         } else {
