@@ -1,8 +1,8 @@
-package com.robdu.survalistsmagicks.spells;
+package com.robdu.survivalistsmagicks.spells;
 
 import com.mna.Registries;
 import com.mna.api.spells.parts.SpellEffect;
-import com.robdu.survalistsmagicks.SurvivalistsMagicks;
+import com.robdu.survivalistsmagicks.SurvivalistsMagicks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

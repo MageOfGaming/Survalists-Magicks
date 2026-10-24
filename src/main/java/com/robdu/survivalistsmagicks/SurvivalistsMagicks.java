@@ -1,4 +1,4 @@
-package com.robdu.survalistsmagicks;
+package com.robdu.survivalistsmagicks;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
