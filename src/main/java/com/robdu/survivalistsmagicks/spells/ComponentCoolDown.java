@@ -99,4 +99,9 @@ public class ComponentCoolDown extends SpellEffect {
     public int baselineCooldown() {
         return 10;
     }
+
+    @Override
+    public boolean canBeOnRandomStaff() {
+        return false;
+    }
 }

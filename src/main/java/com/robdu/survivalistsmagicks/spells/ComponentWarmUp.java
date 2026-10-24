@@ -96,4 +96,9 @@ public class ComponentWarmUp extends SpellEffect {
     public int baselineCooldown() {
         return 10;
     }
+
+    @Override
+    public boolean canBeOnRandomStaff() {
+        return false;
+    }
 }
