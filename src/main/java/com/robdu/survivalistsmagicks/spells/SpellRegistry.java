@@ -13,17 +13,20 @@ public class SpellRegistry {
 
     public static SpellEffect WARMUP;
     public static SpellEffect COOLDOWN;
+    public static SpellEffect FROST_SHIELD;
 
     @SubscribeEvent
     public static void register(RegisterEvent event) {
         event.register(Registries.SpellEffect.get().getRegistryKey(), (registerHelper -> {
             registerHelper.register(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "components/warmup"), SpellRegistry.WARMUP);
             registerHelper.register(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "components/cooldown"), SpellRegistry.COOLDOWN);
+            registerHelper.register(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "components/frost_shield"), SpellRegistry.FROST_SHIELD);
         }));
     }
 
     static {
         SpellRegistry.WARMUP = new ComponentWarmUp(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "textures/components/warmup.png"));
         SpellRegistry.COOLDOWN = new ComponentCoolDown(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "textures/components/cooldown.png"));
+        SpellRegistry.FROST_SHIELD = new ComponentFrostShield(new ResourceLocation(SurvivalistsMagicks.MOD_ID, "textures/components/frost_shield.png"));
     }
 }
