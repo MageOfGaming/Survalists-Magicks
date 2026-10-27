@@ -1,10 +1,13 @@
 package com.robdu.survivalistsmagicks.events;
 
+import com.mna.config.GeneralConfig;
 import com.robdu.survivalistsmagicks.SurvivalistsMagicks;
 import com.robdu.survivalistsmagicks.effects.EffectRegistry;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,10 +21,30 @@ public class onDamageHandler {
         boolean reduce = !event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY) && !event.getSource().is(DamageTypeTags.IS_FALL) && !event.getSource().is(DamageTypes.IN_WALL) && !event.getSource().is(DamageTypes.STARVE) && !event.getSource().is(DamageTypeTags.IS_DROWNING) && !event.getSource().is(DamageTypes.CRAMMING) && !event.getSource().is(DamageTypeTags.BYPASSES_RESISTANCE);
 
         if (event.getSource().is(DamageTypeTags.IS_FREEZING) && frost_shield != null && reduce) {
-            float reduction = event.getAmount() * 0.1F * (float)(frost_shield.getAmplifier() + 1);
+            float reduction = event.getAmount() * 0.1F * (float) (frost_shield.getAmplifier() + 1);
             event.setAmount(event.getAmount() - reduction);
         }
 
-        //TODO: Implement the Retaliation effect
+        Entity source = event.getSource().getEntity();
+        LivingEntity living;
+
+        if (source != null && source instanceof LivingEntity) {
+
+            LivingEntity sourceLiving = (LivingEntity) source;
+
+            if (source != event.getEntity()) {
+
+                living = event.getEntity();
+                double dist = living.distanceToSqr(sourceLiving);
+                boolean retaliate = dist <= 25.0;
+
+                float pct;
+
+                if (frost_shield != null && retaliate) {
+                    pct = (float)((frost_shield.getAmplifier() + 1) * 2);
+                    sourceLiving.hurt(sourceLiving.damageSources().freeze(), pct * GeneralConfig.getDamageMultiplier());
+                }
+            }
+        }
     }
 }
