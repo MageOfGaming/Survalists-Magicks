@@ -7,5 +7,10 @@
   "survivalists_magicks:components/cooldown": "Cool Down",
   "survivalists_magicks:components/cooldown.desc.delay": "The Amount of Delay between casting and execution",
   "survivalists_magicks:components/cooldown.desc.magnitude": "Determines the strength of the cooling effect",
-  "survivalists_magicks:components/cooldown.desc.precision": "If set to 1, you won't be able to overcool yourself to the point of contracting frostbite"
+  "survivalists_magicks:components/cooldown.desc.precision": "If set to 1, you won't be able to overcool yourself to the point of contracting frostbite",
+
+  "survivalists_magicks:components/frost_shield": "Frost Mantle",
+  "survivalists_magicks:components/frost_shield.desc.delay": "The Amount of Delay between casting and execution",
+  "survivalists_magicks:components/frost_shield.desc.duration": "The duration of the frost mantle effect",
+  "survivalists_magicks:components/frost_shield.desc.lesser_magnitude": "The power of the frost mantle. Higher will deal more retaliation damage and reduce frost damage taken by 10% per point"
 }
