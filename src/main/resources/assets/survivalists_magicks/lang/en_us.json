@@ -12,5 +12,7 @@
   "survivalists_magicks:components/frost_shield": "Frost Mantle",
   "survivalists_magicks:components/frost_shield.desc.delay": "The Amount of Delay between casting and execution",
   "survivalists_magicks:components/frost_shield.desc.duration": "The duration of the frost mantle effect",
-  "survivalists_magicks:components/frost_shield.desc.lesser_magnitude": "The power of the frost mantle. Higher will deal more retaliation damage and reduce frost damage taken by 10% per point"
+  "survivalists_magicks:components/frost_shield.desc.lesser_magnitude": "The power of the frost mantle. Higher will deal more retaliation damage and reduce frost damage taken by 10% per point",
+
+  "effect.survivalists_magicks.frost_shield": "Frost Mantle"
 }
