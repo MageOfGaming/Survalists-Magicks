@@ -4,6 +4,7 @@ import com.mna.api.events.ComponentApplyingEvent;
 import com.mna.api.spells.attributes.Attribute;
 import com.mna.config.GeneralConfig;
 import com.robdu.survivalistsmagicks.SurvivalistsMagicks;
+import com.robdu.survivalistsmagicks.effects.EffectFrostShield;
 import com.robdu.survivalistsmagicks.effects.EffectRegistry;
 import com.robdu.survivalistsmagicks.spells.ComponentFrostShield;
 import net.minecraft.tags.DamageTypeTags;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import sfiomn.legendarysurvivaloverhaul.registry.AttributeRegistry;
@@ -97,7 +99,6 @@ public class GeneralEventHandler {
     }
      */
 
-    //TODO: Implement a check if the attribute modifier is already placed, otherwise it will throw a exception
     @SubscribeEvent
     public static void onShieldApply(ComponentApplyingEvent event) {
         if (event.getComponent() instanceof ComponentFrostShield && event.getTarget().getLivingEntity() instanceof Player player) {
@@ -114,9 +115,31 @@ public class GeneralEventHandler {
                             2.0 + magnitude,
                             AttributeModifier.Operation.ADDITION);
 
-                    attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).addTransientModifier(modifier);
+                    if (!attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"))) {
+                        attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).addTransientModifier(modifier);
+                    }
                 }
             });
+        }
+    }
+
+    @SubscribeEvent
+    public static void onShieldRemove(MobEffectEvent.Remove event) {
+        if (event.getEffect() instanceof EffectFrostShield && event.getEntity() instanceof Player player) {
+            AttributeMap attributes = player.getAttributes();
+            if (attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"))) {
+                attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).removeModifier(UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onShieldExpire(MobEffectEvent.Expired event) {
+        if (event.getEffectInstance().getEffect() instanceof EffectFrostShield && event.getEntity() instanceof Player player) {
+            AttributeMap attributes = player.getAttributes();
+            if (attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"))) {
+                attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).removeModifier(UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"));
+            }
         }
     }
 }
