@@ -99,6 +99,11 @@ public class GeneralEventHandler {
     }
      */
 
+    static final UUID heatResistanceModifierUUID = UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c");
+
+    //Will need later
+    //static final UUID coldResistanceModifierUUID = UUID.fromString("55022a91-f9a7-4d0b-be7a-2035af0ecac3");
+    
     @SubscribeEvent
     public static void onShieldApply(ComponentApplyingEvent event) {
         if (event.getComponent() instanceof ComponentFrostShield && event.getTarget().getLivingEntity() instanceof Player player) {
@@ -110,12 +115,12 @@ public class GeneralEventHandler {
                     float magnitude = component.getValue(Attribute.LESSER_MAGNITUDE);
 
                     AttributeModifier modifier = new AttributeModifier(
-                            UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"),
+                            heatResistanceModifierUUID,
                             "frost_shield_resistance",
                             2.0 + magnitude,
                             AttributeModifier.Operation.ADDITION);
 
-                    if (!attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"))) {
+                    if (!attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), heatResistanceModifierUUID)) {
                         attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).addTransientModifier(modifier);
                     }
                 }
@@ -127,8 +132,8 @@ public class GeneralEventHandler {
     public static void onShieldRemove(MobEffectEvent.Remove event) {
         if (event.getEffect() instanceof EffectFrostShield && event.getEntity() instanceof Player player) {
             AttributeMap attributes = player.getAttributes();
-            if (attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"))) {
-                attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).removeModifier(UUID.fromString("6632f493-7b82-40fe-9e12-9369812f411c"));
+            if (attributes.hasModifier(AttributeRegistry.HEAT_RESISTANCE.get(), heatResistanceModifierUUID)) {
+                attributes.getInstance(AttributeRegistry.HEAT_RESISTANCE.get()).removeModifier(heatResistanceModifierUUID);
             }
         }
     }
