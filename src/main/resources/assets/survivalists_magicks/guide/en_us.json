@@ -1,0 +1,75 @@
+{
+  "Component: Warm Up": {
+    "index": 2,
+    "category": "sorcery",
+    "sections": [
+      {
+        "type": "title",
+        "value": "Warm Up"
+      },
+      {
+        "type": "text",
+        "json": [
+          {
+            "text": "With my arcane prowess growing each day I am becoming more and more annoyed by the minor nuisances of life, thus I have devised an incantation capable of spending my body warmth even in the deepest of winters and iciest of deserts, I have achieved this by modifying an existing fire affinity spell, which means there is to be had a bit of caution when using this new device, it will also not enhance my capabilities of keeping that warmth, if I don't take the right precautions it will disperse just as fast as everything else"
+          }
+        ]
+      }
+    ],
+    "related_recipes": [
+      {
+        "type": "spell_part",
+        "location": "survivalists_magicks:components/warmup"
+      }
+    ]
+  },
+  "Component: Cool Down": {
+    "index": 2,
+    "category": "sorcery",
+    "sections": [
+      {
+        "type": "title",
+        "value": "Cool Down"
+      },
+      {
+        "type": "text",
+        "json": [
+          {
+            "text": "WIP"
+          }
+        ]
+      }
+    ],
+    "related_recipes": [
+      {
+        "type": "spell_part",
+        "location": "survivalists_magicks:components/cooldown"
+      }
+    ]
+  },
+  "Component: Frost Mantle": {
+    "index": 2,
+    "category": "sorcery",
+    "sections": [
+      {
+        "type": "title",
+        "value": "Frost Mantle"
+      },
+      {
+        "type": "text",
+        "json": [
+          {
+            "text": "WIP"
+          }
+        ]
+      }
+    ],
+    "related_recipes": [
+      {
+        "type": "spell_part",
+        "location": "survivalists_magicks:components/frost_shield"
+      }
+    ]
+  },
+  "version": "1.0"
+}

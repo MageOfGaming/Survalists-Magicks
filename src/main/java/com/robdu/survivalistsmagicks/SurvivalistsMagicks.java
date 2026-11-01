@@ -1,7 +1,9 @@
 package com.robdu.survivalistsmagicks;
 
+import com.mna.api.guidebook.RegisterGuidebooksEvent;
 import com.mojang.logging.LogUtils;
 import com.robdu.survivalistsmagicks.effects.EffectRegistry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -45,6 +47,11 @@ public class SurvivalistsMagicks
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public void onRegisterCodex(RegisterGuidebooksEvent event) {
+        event.getRegistry().addGuidebookPath(new ResourceLocation(MOD_ID, "guide"));
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
