@@ -59,7 +59,21 @@
         "type": "text",
         "json": [
           {
-            "text": "WIP \n\nWIP2"
+            "text": "The dying bodies of the undead are utterly prone to fire; thus, for the longest time, the demon's cloak of flame has been an eyesore for the legion. \n\nHowever, by further researching their cloak of fire, I have been able to come up with a similar incantation: "
+          },
+          {
+            "text": "retaliating with a deep chill rather than flames while further fortifying my frost resistance ",
+            "color": "dark_purple"
+          },
+          {
+            "text": "\n\nThis spell part can only be crafted by those who have aligned themselves with the "
+          },
+          {
+            "text": "Undead",
+            "color": "dark_gray"
+          },
+          {
+            "text": "."
           }
         ]
       }
