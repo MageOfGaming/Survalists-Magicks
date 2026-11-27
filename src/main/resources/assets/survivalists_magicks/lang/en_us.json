@@ -14,5 +14,7 @@
   "survivalists_magicks:components/frost_shield.desc.duration": "The duration of the frost mantle effect",
   "survivalists_magicks:components/frost_shield.desc.lesser_magnitude": "The power of the frost mantle. Higher values will make it deal more retaliation damage and reduce frost damage taken by 10% per point",
 
-  "effect.survivalists_magicks.frost_shield": "Frost Mantle"
+  "effect.survivalists_magicks.frost_shield": "Frost Mantle",
+  "effect.survivalists_magicks.cold": "Cold",
+  "effect.survivalists_magicks.warmth": "Warmth"
 }
