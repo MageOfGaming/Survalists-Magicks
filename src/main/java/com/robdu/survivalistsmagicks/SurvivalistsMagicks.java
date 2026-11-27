@@ -2,7 +2,9 @@ package com.robdu.survivalistsmagicks;
 
 import com.mna.api.guidebook.RegisterGuidebooksEvent;
 import com.mojang.logging.LogUtils;
+import com.robdu.survivalistsmagicks.blocks.BlockRegistry;
 import com.robdu.survivalistsmagicks.effects.EffectRegistry;
+import com.robdu.survivalistsmagicks.items.ItemRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,7 +39,9 @@ public class SurvivalistsMagicks
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        EffectRegistry.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EffectRegistry.register(modEventBus);
+        ItemRegistry.register(modEventBus);
+        BlockRegistry.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
