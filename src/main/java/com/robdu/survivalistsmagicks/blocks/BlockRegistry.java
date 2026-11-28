@@ -27,10 +27,9 @@ public class BlockRegistry {
                     .strength(3.0F, 10.0F)
                     .isSuffocating(BlockInit.NEVER);
 
-    //No idea why this isn't ticking, gotta look into this later
     public static final RegistryObject<PylonBlock> PYLON_WARMTH =
             BLOCKS.register("pylon/warmth", () ->
-                    new PotionPylonBlock(PYLON_PROPERTIES, EffectRegistry.WARMTH, "test")
+                    new IHateForgePotionPylonBlock(PYLON_PROPERTIES, EffectRegistry.WARMTH, "curse you fuck my life mod loader")
                             .addPowerRequirement(Affinity.FIRE, 0.2f));
 
     public static void register(IEventBus eventBus) {

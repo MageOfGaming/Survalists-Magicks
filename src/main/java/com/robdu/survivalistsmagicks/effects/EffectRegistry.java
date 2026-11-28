@@ -16,7 +16,7 @@ public class EffectRegistry {
 
     public static final RegistryObject<MobEffect> FROST_SHIELD = EFFECTS.register("frost_shield", EffectFrostShield::new);
 
-    public static final RegistryObject<MobEffect> WARMTH = EFFECTS.register("warmth", () -> new SimpleAttributeEffect(MobEffectCategory.BENEFICIAL, 0xffffff, 1.0)
+    public static final RegistryObject<MobEffect> WARMTH = EFFECTS.register("warmth", () -> new SimpleAttributeEffect(MobEffectCategory.BENEFICIAL, 0xff5500, 1.0)
             .addAttributeModifier(AttributeRegistry.HEATING_TEMPERATURE.get(), "7aa2468f-04d0-492b-a69b-a966ed6f6233", 1.0, AttributeModifier.Operation.ADDITION));
 
     public static final RegistryObject<MobEffect> COLD = EFFECTS.register("cold", () -> new SimpleAttributeEffect(MobEffectCategory.BENEFICIAL, 0xffffff, -1.0)
