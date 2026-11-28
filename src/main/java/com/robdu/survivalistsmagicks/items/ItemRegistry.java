@@ -1,5 +1,6 @@
 package com.robdu.survivalistsmagicks.items;
 
+import com.mna.api.items.MACreativeTabs;
 import com.mna.api.items.OffsetPlacerItem;
 import com.robdu.survivalistsmagicks.SurvivalistsMagicks;
 import com.robdu.survivalistsmagicks.blocks.BlockRegistry;
