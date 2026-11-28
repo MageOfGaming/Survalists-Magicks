@@ -16,5 +16,7 @@
 
   "effect.survivalists_magicks.frost_shield": "Frost Mantle",
   "effect.survivalists_magicks.cold": "Cold",
-  "effect.survivalists_magicks.warmth": "Warmth"
+  "effect.survivalists_magicks.warmth": "Warmth",
+
+  "block.survivalists_magicks.pylon.warmth": "Pylon: Warmth"
 }

@@ -1,8 +1,11 @@
 package com.robdu.survivalistsmagicks;
 
 import com.mna.api.guidebook.RegisterGuidebooksEvent;
+import com.mna.api.items.MACreativeTabs;
 import com.mojang.logging.LogUtils;
 import com.robdu.survivalistsmagicks.blocks.BlockRegistry;
+import com.robdu.survivalistsmagicks.blocks.tileEntities.ClientTileRegistry;
+import com.robdu.survivalistsmagicks.blocks.tileEntities.TileRegistry;
 import com.robdu.survivalistsmagicks.effects.EffectRegistry;
 import com.robdu.survivalistsmagicks.items.ItemRegistry;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -41,16 +45,22 @@ public class SurvivalistsMagicks
 
         EffectRegistry.register(modEventBus);
         ItemRegistry.register(modEventBus);
+        TileRegistry.register(modEventBus);
         BlockRegistry.register(modEventBus);
+
+        if (FMLEnvironment.dist.isClient()) {
+            modEventBus.register(ClientTileRegistry.class);
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
     }
 
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if (event.getTab() == MACreativeTabs.GENERAL) {
+            event.accept(ItemRegistry.PYLON_WARMTH);
+        }
     }
 
     @SubscribeEvent
